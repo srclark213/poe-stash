@@ -1,17 +1,19 @@
+require('dotenv').config();
+
 import * as http from 'http';
 import * as debug from 'debug';
 
 import App from './App';
 
-debug('poe-stash:server');
+let logger = debug('poe-stash:server');
 
 const port = process.env.PORT || 3000;
 App.set('port', port);
 
 const server = http.createServer(App);
-server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+server.listen(port);
 
 function onError(error: NodeJS.ErrnoException): void {
   if (error.syscall !== 'listen') throw error;
@@ -33,5 +35,5 @@ function onError(error: NodeJS.ErrnoException): void {
 function onListening(): void {
   let addr = server.address();
   let bind = (typeof addr === 'string') ? `pipe ${addr}` : `port ${addr.port}`;
-  debug(`Listening on ${bind}`);
+  logger(`Listening on ${bind}`);
 }
