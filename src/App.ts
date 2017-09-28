@@ -1,6 +1,6 @@
 import * as path from 'path';
 import * as express from 'express';
-import * as logger from 'morgan';
+import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 
 // Creates and configures an ExpressJS web server.
@@ -18,7 +18,7 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
-    this.express.use(logger('dev'));
+    this.express.use(morgan('dev'));
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
   }
