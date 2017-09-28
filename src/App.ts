@@ -18,7 +18,10 @@ class App {
 
   // Configure Express middleware.
   private middleware(): void {
+    // morgan logging middleware to log api requests to console
     this.express.use(morgan('dev'));
+
+    // bodyparser auto-parses json and urlencoded request bodies and attaches them to req.body in route handlers
     this.express.use(bodyParser.json());
     this.express.use(bodyParser.urlencoded({ extended: false }));
   }
