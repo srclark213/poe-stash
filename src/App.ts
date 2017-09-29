@@ -2,12 +2,15 @@ import * as path from 'path';
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
+import {getApi} from './ApiRequest';
+
 
 // Creates and configures an ExpressJS web server.
 class App {
 
   // ref to Express instance
   public express: express.Application;
+
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -38,6 +41,10 @@ class App {
         message: 'Hello World!'
       });
     });
+    router.get('/test', (req, res, next) => {
+      getApi().pipe(res);
+    });
+
     this.express.use('/', router);
   }
 
