@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
-import {getApi} from './ApiRequest';
+import {updateStashInfo} from './ApiRequest';
 
 
 // Creates and configures an ExpressJS web server.
@@ -41,8 +41,8 @@ class App {
         message: 'Hello World!'
       });
     });
-    router.get('/test', (req, res, next) => {
-      getApi().pipe(res);
+    router.get('/updateStashInfo', (req, res, next) => {
+      updateStashInfo().then((result) => res.json(result));
     });
 
     this.express.use('/', router);
