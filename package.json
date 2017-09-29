@@ -1,7 +1,11 @@
 {
   "name": "poe-stash",
   "version": "1.0.0",
-  "description": "",
+  "description": "web app for parsing Path of Exile public stash tab api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/srclark213/poe-stash"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
