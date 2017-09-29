@@ -1,13 +1,13 @@
-import * as request from 'request';
 import * as webRequest from 'web-request';
 
-export async function updateStashInfo(): Promise<any>{
-     return await getStashInfo().then();
+const STASH_TAB_URL: string = 'http://www.pathofexile.com/api/public-stash-tabs';
 
+export async function updateStashInfo(): Promise<any> {
+    const stashData = await getStashInfo();
+    // TODO: Add processing logic
+    return stashData;
 }
 
 async function getStashInfo(): Promise<any> {
-    var url = 'http://www.pathofexile.com/api/public-stash-tabs';
-    var data = await webRequest.json<any>(url);
-    return data;
+    return await webRequest.json<any>(STASH_TAB_URL);
 }
